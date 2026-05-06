@@ -316,7 +316,7 @@ p  { font-size: 1rem; line-height: 1.8; }
 .page-hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: url('../assets/images/hero_banner.png') center/cover no-repeat;
+  background: url('../assets/images/hero_banner.webp') center/cover no-repeat;
   opacity: .15;
 }
 .page-hero .container { position: relative; z-index: 1; }
