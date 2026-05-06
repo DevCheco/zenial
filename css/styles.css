@@ -583,7 +583,7 @@ textarea.form-control { min-height: 130px; resize: vertical; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .valores-grid { grid-template-columns: 1fr 1fr; }
   .process-steps { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
   .form-grid { grid-template-columns: 1fr; }
@@ -591,7 +591,6 @@ textarea.form-control { min-height: 130px; resize: vertical; }
 
 @media (max-width: 480px) {
   .valores-grid { grid-template-columns: 1fr; }
-  .stats-grid   { grid-template-columns: 1fr 1fr; }
   .cert-strip   { gap: 1.5rem; }
   h1 { font-size: 2rem; }
   h2 { font-size: 1.6rem; }
