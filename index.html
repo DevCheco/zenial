@@ -256,6 +256,18 @@
       gap: 1.8rem;
     }
 
+    @media (max-width: 900px) {
+      .prod-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .prod-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* ── STATS SECTION ── */
     .stats-section {
       background: linear-gradient(135deg, var(--color-dark), var(--color-secondary));
