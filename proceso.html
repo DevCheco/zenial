@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Descubre el proceso productivo de Zenial: desde el cultivo de maíz hasta la distribución de harina. Innovación y sostenibilidad en cada etapa." />
+  <title>Proceso | Zenial — Del Cultivo a la Distribución</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ─── Proceso detallado ─── */
+    .proceso-etapa {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .proceso-etapa:last-child {
+      border-bottom: none;
+    }
+
+    .proceso-etapa.reverse .etapa-img {
+      order: 2;
+    }
+
+    .proceso-etapa.reverse .etapa-text {
+      order: 1;
+    }
+
+    .etapa-img {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+    }
+
+    .etapa-img-inner {
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+    }
+
+    .etapa-img img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+    }
+
+    .etapa-num-big {
+      position: absolute;
+      bottom: 1rem;
+      right: 1.5rem;
+      font-family: var(--font-heading);
+      font-size: 6rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, .15);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .etapa-text {}
+
+    .etapa-step {
+      font-family: var(--font-accent);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: .5rem;
+    }
+
+    .etapa-text h2 {
+      margin-bottom: 1rem;
+    }
+
+    .etapa-text p {
+      color: var(--color-text-light);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .etapa-points {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      margin-top: 1.2rem;
+    }
+
+    .etapa-point {
+      display: flex;
+      align-items: flex-start;
+      gap: .8rem;
+      padding: .9rem 1.1rem;
+      background: var(--color-light);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--color-primary);
+    }
+
+    .ep-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .ep-text {
+      font-size: .9rem;
+      color: var(--color-text);
+    }
+
+    .ep-text strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: .2rem;
+    }
+
+    /* ─── Timeline resumen ─── */
+    .flujo-section {
+      background: var(--color-dark);
+      padding: 4rem 0;
+    }
+
+    .flujo-steps {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      position: relative;
+      gap: 1rem;
+    }
+
+    .flujo-steps::before {
+      content: '';
+      position: absolute;
+      top: 2rem;
+      left: 5%;
+      right: 5%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-secondary));
+    }
+
+    .flujo-step {
+      flex: 1;
+      text-align: center;
+      padding: 0 .5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .flujo-dot {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 16px rgba(232, 160, 32, .4);
+    }
+
+    .flujo-step h4 {
+      color: var(--color-white);
+      font-size: .95rem;
+      margin-bottom: .3rem;
+    }
+
+    .flujo-step p {
+      color: rgba(255, 255, 255, .55);
+      font-size: .8rem;
+    }
+
+    /* ─── Tecnología ─── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .tech-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: var(--transition);
+      border-top: 4px solid var(--color-secondary);
+    }
+
+    .tech-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .tech-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tech-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: .5rem;
+    }
+
+    .tech-card p {
+      font-size: .88rem;
+      color: var(--color-text-light);
+    }
+
+    /* ─── Sostenibilidad ─── */
+    .sostenibilidad {
+      background: linear-gradient(135deg, #D1FAE5, #ECFDF5);
+      padding: 5rem 0;
+    }
+
+    .sos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .sos-card {
+      text-align: center;
+      padding: 1.8rem 1.2rem;
+    }
+
+    .sos-icon {
+      font-size: 2.8rem;
+      margin-bottom: .8rem;
+    }
+
+    .sos-card h4 {
+      font-size: 1rem;
+      color: var(--color-dark);
+      margin-bottom: .4rem;
+    }
+
+    .sos-card p {
+      font-size: .85rem;
+      color: var(--color-text-light);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="Logo Zenial" onerror="this.style.display='none'">
+        <span class="nav-logo-text">Ze<span>nial</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="proceso.html" class="active">Proceso</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <a href="contacto.html" class="btn btn-primary nav-cta">Contáctanos</a>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <span class="section-tag">Cadena de Valor</span>
+        <h1>Nuestro Proceso<br>Productivo</h1>
+        <p>Un sistema integrado, trazable y sostenible que garantiza calidad desde la primera semilla hasta el producto
+          final en tu mesa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FLUJO RESUMEN ══ -->
+  <section class="flujo-section">
+    <div class="container">
+      <div class="flujo-steps">
+        <div class="flujo-step reveal">
+          <div class="flujo-dot">🌱</div>
+          <h4>Siembra</h4>
+          <p>Preparación del suelo y siembra certificada</p>
+        </div>
+        <div class="flujo-step reveal">
+          <div class="flujo-dot">💧</div>
+          <h4>Cultivo</h4>
+          <p>Riego, fertilización y monitoreo</p>
+        </div>
+        <div class="flujo-step reveal">
+          <div class="flujo-dot">🌽</div>
+          <h4>Cosecha</h4>
+          <p>Recolección mecanizada</p>
+        </div>
+        <div class="flujo-step reveal">
+          <div class="flujo-dot">🏭</div>
+          <h4>Procesamiento</h4>
+          <p>Limpieza, secado y molienda</p>
+        </div>
+        <div class="flujo-step reveal">
+          <div class="flujo-dot">🔬</div>
+          <h4>Control</h4>
+          <p>Análisis de laboratorio</p>
+        </div>
+        <div class="flujo-step reveal">
+          <div class="flujo-dot">📦</div>
+          <h4>Empaque</h4>
+          <p>Empaque en ambiente controlado</p>
+        </div>
+        <div class="flujo-step reveal">
+          <div class="flujo-dot">🚛</div>
+          <h4>Distribución</h4>
+          <p>Entrega nacional e internacional</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ETAPAS DETALLADAS ══ -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom:1rem;">
+        <span class="section-tag">Proceso Detallado</span>
+        <h2 class="section-title">Cada Etapa,<br>Pensada con Precisión</h2>
+      </div>
+
+      <!-- ETAPA 1: SIEMBRA -->
+      <div class="proceso-etapa">
+        <div class="etapa-img reveal-left">
+          <div class="etapa-img-inner" style="background:linear-gradient(135deg,#D1FAE5,#065F46);">
+            🌱
+          </div>
+          <div class="etapa-num-big">01</div>
+        </div>
+        <div class="etapa-text reveal-right">
+          <div class="etapa-step">Etapa 01</div>
+          <h2>Siembra y<br>Preparación del Suelo</h2>
+          <p>Todo comienza con la tierra. En Zenial utilizamos análisis de suelos satelitales y estudios agronómicos
+            para determinar el momento y método óptimo de siembra.</p>
+          <div class="etapa-points">
+            <div class="etapa-point">
+              <span class="ep-icon">🔬</span>
+              <div class="ep-text"><strong>Análisis de Suelos</strong>Evaluación de pH, nutrientes y microbiología antes
+                de cada ciclo de siembra.</div>
+            </div>
+            <div class="etapa-point">
+              <span class="ep-icon">🌿</span>
+              <div class="ep-text"><strong>Semillas Certificadas</strong>Uso exclusivo de semillas con trazabilidad
+                genética y tolerancia a estrés hídrico.</div>
+            </div>
+            <div class="etapa-point">
+              <span class="ep-icon">🚜</span>
+              <div class="ep-text"><strong>Maquinaria de Precisión</strong>Sembradoras GPS que garantizan densidad y
+                profundidad uniformes.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ETAPA 2: CULTIVO -->
+      <div class="proceso-etapa reverse">
+        <div class="etapa-text reveal-left">
+          <div class="etapa-step">Etapa 02</div>
+          <h2>Cultivo y<br>Manejo Agronómico</h2>
+          <p>Durante los 90-120 días de ciclo vegetativo, nuestros ingenieros agrónomos monitorean cada parcela con
+            tecnología de agricultura de precisión para optimizar el uso de recursos.</p>
+          <div class="etapa-points">
+            <div class="etapa-point">
+              <span class="ep-icon">💧</span>
+              <div class="ep-text"><strong>Riego Tecnificado</strong>Sistema de riego por goteo que reduce el consumo de
+                agua en un 40% vs. riego convencional.</div>
+            </div>
+            <div class="etapa-point">
+              <span class="ep-icon">📡</span>
+              <div class="ep-text"><strong>Monitoreo Remoto</strong>Sensores IoT en campo para temperatura, humedad y
+                estado nutricional del cultivo.</div>
+            </div>
+            <div class="etapa-point">
+              <span class="ep-icon">🐝</span>
+              <div class="ep-text"><strong>Manejo Integrado de Plagas</strong>Control biológico que minimiza el uso de
+                agroquímicos y protege la fauna local.</div>
+            </div>
+          </div>
+        </div>
+        <div class="etapa-img reveal-right">
+          <img src="assets/images/hero_banner.png"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'etapa-img-inner\' style=\'background:linear-gradient(135deg,#FEF3C7,#F59E0B)\'>🌽</div><div class=\'etapa-num-big\'>02</div>'"
+            alt="Cultivo de maíz Zenial" style="height:380px;object-fit:cover;width:100%;" />
+          <div class="etapa-num-big">02</div>
+        </div>
+      </div>
+
+      <!-- ETAPA 3: COSECHA -->
+      <div class="proceso-etapa">
+        <div class="etapa-img reveal-left">
+          <div class="etapa-img-inner" style="background:linear-gradient(135deg,#FDE68A,#D97706);">
+            🌽
+          </div>
+          <div class="etapa-num-big">03</div>
+        </div>
+        <div class="etapa-text reveal-right">
+          <div class="etapa-step">Etapa 03</div>
+          <h2>Cosecha y<br>Recepción</h2>
+          <p>La cosecha se realiza cuando el grano alcanza entre 14-18% de humedad, garantizando máxima calidad.
+            Cosechadoras de alta eficiencia reducen las pérdidas post-cosecha al mínimo.</p>
+          <div class="etapa-points">
+            <div class="etapa-point">
+              <span class="ep-icon">⏱️</span>
+              <div class="ep-text"><strong>Momento Óptimo</strong>Medición de humedad en campo para determinar el punto
+                exacto de cosecha.</div>
+            </div>
+            <div class="etapa-point">
+              <span class="ep-icon">🚜</span>
+              <div class="ep-text"><strong>Cosecha Mecanizada</strong>Combinadas de última generación con sistema GPS y
+                registro automático de rendimientos.</div>
+            </div>
+            <div class="etapa-point">
+              <span class="ep-icon">📊</span>
+              <div class="ep-text"><strong>Trazabilidad Total</strong>Cada lote recibe un código QR con información de
+                parcela, fecha y agricultor responsable.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ETAPA 4: PROCESAMIENTO -->
+      <div class="proceso-etapa reverse">
+        <div class="etapa-text reveal-left">
+          <div class="etapa-step">Etapa 04</div>
+          <h2>Procesamiento<br>Industrial</h2>
+          <p>En nuestra planta procesadora con capacidad de 200 ton/día, el maíz pasa por limpieza, clasificación,
+            secado controlado y molienda avanzada bajo normas BPM e INVIMA.</p>
+          <div class="etapa-points">
+            <div class="etapa-point">
+              <span class="ep-icon">🧹</span>
+              <div class="ep-text"><strong>Pre-limpieza y Clasificación</strong>Separación de impurezas por vibración,
+                aspiración y visión artificial.</div>
+            </div>
+            <div class="etapa-point">
+              <span class="ep-icon">🌡️</span>
+              <div class="ep-text"><strong>Secado Controlado</strong>Torres de secado multi-etapa que reducen humedad
+                hasta ≤13% sin alterar propiedades nutricionales.</div>
+            </div>
+            <div class="etapa-point">
+              <span class="ep-icon">⚙️</span>
+              <div class="ep-text"><strong>Molienda y Tamizado</strong>Molinos de rodillos con sistemas de tamizado para
+                granulometrías específicas según el producto.</div>
+            </div>
+          </div>
+        </div>
+        <div class="etapa-img reveal-right">
+          <img src="assets/images/planta_procesadora.png"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'etapa-img-inner\' style=\'background:linear-gradient(135deg,#E0F2FE,#0369A1)\'>⚙️</div><div class=\'etapa-num-big\'>04</div>'"
+            alt="Planta procesadora Zenial" style="height:380px;object-fit:cover;width:100%;" />
+          <div class="etapa-num-big">04</div>
+        </div>
+      </div>
+
+      <!-- ETAPA 5: DISTRIBUCIÓN -->
+      <div class="proceso-etapa">
+        <div class="etapa-img reveal-left">
+          <div class="etapa-img-inner" style="background:linear-gradient(135deg,#E0E7FF,#4338CA);">
+            🚛
+          </div>
+          <div class="etapa-num-big">05</div>
+        </div>
+        <div class="etapa-text reveal-right">
+          <div class="etapa-step">Etapa 05</div>
+          <h2>Empaque y<br>Distribución</h2>
+          <p>El producto terminado se empaca en ambiente controlado y pasa por control de calidad final antes de ser
+            distribuido a clientes en todo el territorio nacional e internacional.</p>
+          <div class="etapa-points">
+            <div class="etapa-point">
+              <span class="ep-icon">📦</span>
+              <div class="ep-text"><strong>Empaque Automatizado</strong>Líneas de empaque en atmósfera controlada que
+                garantizan frescura y vida útil máxima.</div>
+            </div>
+            <div class="etapa-point">
+              <span class="ep-icon">🔬</span>
+              <div class="ep-text"><strong>Control Final de Calidad</strong>Más de 30 análisis fisicoquímicos y
+                microbiológicos antes de liberar cada lote.</div>
+            </div>
+            <div class="etapa-point">
+              <span class="ep-icon">🌍</span>
+              <div class="ep-text"><strong>Distribución Nacional e Internacional</strong>Red de distribución refrigerada
+                con cobertura en Colombia y exportación a 5 países.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ TECNOLOGÍA ══ -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-tag">Innovación</span>
+        <h2 class="section-title">Tecnología que<br>Marca la Diferencia</h2>
+        <p class="section-subtitle">Inversión constante en equipos y sistemas para garantizar los mejores resultados</p>
+      </div>
+      <div class="tech-grid" style="margin-top:2.5rem;">
+        <div class="tech-card reveal">
+
+          <h3>Agricultura de Precisión</h3>
+          <p>Imágenes satelitales y sensores IoT para monitoreo en tiempo real de 15.000 hectáreas de cultivo.</p>
+        </div>
+        <div class="tech-card reveal">
+
+          <h3>Automatización Industrial</h3>
+          <p>Planta 4.0 con control PLC, visión artificial para selección de granos y empaque robotizado.</p>
+        </div>
+        <div class="tech-card reveal">
+
+          <h3>Laboratorio Propio</h3>
+          <p>Análisis físico-químico y microbiológico en nuestro laboratorio acreditado bajo normas ISO/IEC 17025.</p>
+        </div>
+        <div class="tech-card reveal">
+
+          <h3>App de Trazabilidad</h3>
+          <p>Sistema blockchain que permite rastrear cualquier producto hasta la parcela y agricultor de origen.</p>
+        </div>
+        <div class="tech-card reveal">
+
+          <h3>Gestión Hídrica</h3>
+          <p>Sistema de recolección de agua lluvia y riego inteligente que reduce el consumo un 40% anual.</p>
+        </div>
+        <div class="tech-card reveal">
+          <h3>Economía Circular</h3>
+          <p>El 98% de los residuos de proceso se convierte en compost, biogás o alimento para animales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SOSTENIBILIDAD ══ -->
+  <section class="sostenibilidad">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-tag" style="color:var(--color-secondary);background:rgba(45,106,79,.12);">Compromiso
+          Ambiental</span>
+        <h2 class="section-title" style="color:var(--color-dark);">Un Proceso Sostenible<br>de Principio a Fin</h2>
+        <p class="section-subtitle">La sostenibilidad no es solo un discurso en Zenial. Es la base de cada decisión
+          operativa.</p>
+      </div>
+      <div class="sos-grid" style="margin-top:2.5rem;">
+        <div class="sos-card reveal">
+          <div class="sos-icon">🌳</div>
+          <h4>Reforestación</h4>
+          <p>5.000 árboles plantados en zonas de amortiguamiento alrededor de los cultivos.</p>
+        </div>
+        <div class="sos-card reveal">
+          <div class="sos-icon">☀️</div>
+          <h4>Energía Solar</h4>
+          <p>30% de la energía de la planta proviene de paneles solares instalados en techos y zonas auxiliares.</p>
+        </div>
+        <div class="sos-card reveal">
+          <div class="sos-icon">💧</div>
+          <h4>Cero Vertimientos</h4>
+          <p>Sistema de tratamiento de aguas residuales que garantiza cero vertimientos al ecosistema.</p>
+        </div>
+        <div class="sos-card reveal">
+          <div class="sos-icon">📉</div>
+          <h4>Huella de Carbono</h4>
+          <p>Reducción del 35% en emisiones de CO₂ respecto al año base 2020 mediante eficiencia energética.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA ══ -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>¿Quieres Conocer<br>Nuestra Planta?</h2>
+      <p>Ofrecemos visitas técnicas a nuestras instalaciones para distribuidores, industriales y académicos.<br>Agenda
+        la tuya hoy.</p>
+      <div class="cta-btns">
+        <a href="contacto.html" class="btn btn-outline">Agendar Visita</a>
+        <a href="productos.html" class="btn" style="background:var(--color-white);color:var(--color-dark);">Ver
+          Productos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo-text">Ze<span style="color:var(--color-primary)">nial</span></div>
+          <p>Empresa agroindustrial colombiana dedicada al cultivo y procesamiento de maíz para la producción de harina
+            de alta calidad.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="proceso.html">Proceso</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Proceso</h4>
+          <ul>
+            <li><a href="proceso.html">Siembra</a></li>
+            <li><a href="proceso.html">Cultivo</a></li>
+            <li><a href="proceso.html">Cosecha</a></li>
+            <li><a href="proceso.html">Procesamiento</a></li>
+            <li><a href="proceso.html">Distribución</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <div class="footer-contact-item"><span class="icon">📍</span><span>Vía Principal Km 12, Villavicencio,
+              Meta</span></div>
+          <div class="footer-contact-item"><span class="icon">📞</span><span>+57 (8) 123 4567</span></div>
+          <div class="footer-contact-item"><span class="icon">✉️</span><span>info@zenial.com.co</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Zenial S.A.S. Todos los derechos reservados.</span>
+        <span>Hecho con 🌽 en Colombia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

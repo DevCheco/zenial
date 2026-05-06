@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Catálogo de productos Zenial: harina de maíz precocida blanca, amarilla, integral y masa nixtamalizada de alta calidad." />
+  <title>Productos | Zenial — Harina de Maíz Premium</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    .prod-detail-card {
+      background: var(--color-white);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--color-border);
+      transition: var(--transition);
+    }
+
+    .prod-detail-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .prod-detail-img {
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prod-detail-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .prod-detail-img .prod-badge-corner {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .prod-detail-body {
+      padding: 2rem;
+    }
+
+    .prod-detail-name {
+      font-size: 1.5rem;
+      margin-bottom: .6rem;
+      color: var(--color-dark);
+    }
+
+    .prod-detail-desc {
+      color: var(--color-text-light);
+      margin-bottom: 1.4rem;
+      line-height: 1.8;
+    }
+
+    .prod-attrs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .prod-attr {
+      background: var(--color-light);
+      border-radius: var(--radius-md);
+      padding: .75rem 1rem;
+    }
+
+    .prod-attr-label {
+      font-size: .75rem;
+      color: var(--color-text-light);
+      font-family: var(--font-accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .prod-attr-val {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-top: .2rem;
+    }
+
+    .prod-uses {
+      margin-bottom: 1.5rem;
+    }
+
+    .prod-uses h4 {
+      font-size: .9rem;
+      font-family: var(--font-accent);
+      font-weight: 700;
+      color: var(--color-secondary);
+      margin-bottom: .6rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .use-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .use-tag {
+      background: rgba(45, 106, 79, .1);
+      color: var(--color-secondary);
+      padding: .3rem .85rem;
+      border-radius: 50px;
+      font-size: .8rem;
+      font-weight: 600;
+      font-family: var(--font-accent);
+    }
+
+    .filtros-bar {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .filtro-btn {
+      padding: .55rem 1.3rem;
+      border-radius: 50px;
+      border: 2px solid var(--color-border);
+      font-family: var(--font-accent);
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--color-text-light);
+      background: var(--color-white);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filtro-btn.active,
+    .filtro-btn:hover {
+      border-color: var(--color-secondary);
+      color: var(--color-secondary);
+      background: rgba(45, 106, 79, .08);
+    }
+
+    .calidad-section {
+      background: linear-gradient(135deg, var(--color-dark), var(--color-secondary));
+      padding: 5rem 0;
+    }
+
+    .calidad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .calidad-item {
+      text-align: center;
+    }
+
+    .calidad-num {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--color-primary);
+    }
+
+    .calidad-label {
+      color: rgba(255, 255, 255, .7);
+      font-family: var(--font-accent);
+      font-size: .9rem;
+      margin-top: .3rem;
+    }
+
+    .calidad-intro {
+      text-align: center;
+      color: var(--color-white);
+      margin-bottom: 3rem;
+    }
+
+    .calidad-intro h2 {
+      color: var(--color-white);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="Logo Zenial" onerror="this.style.display='none'">
+        <span class="nav-logo-text">Ze<span>nial</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="productos.html" class="active">Productos</a></li>
+        <li><a href="proceso.html">Proceso</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <a href="contacto.html" class="btn btn-primary nav-cta">Contáctanos</a>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <span class="section-tag">Catálogo</span>
+        <h1>Productos de<br>Calidad Premium</h1>
+        <p>Línea completa de harinas de maíz y derivados con trazabilidad total desde el campo hasta tu mesa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FILTROS ══ -->
+  <section class="section-sm bg-light">
+    <div class="container">
+      <div class="filtros-bar" id="filtros">
+        <button class="filtro-btn active" data-filter="all">Todos</button>
+        <button class="filtro-btn" data-filter="blanca">Harinas Blancas</button>
+        <button class="filtro-btn" data-filter="amarilla">Harinas Amarillas</button>
+        <button class="filtro-btn" data-filter="especial">Especiales</button>
+        <button class="filtro-btn" data-filter="industrial">Industrial</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PRODUCTOS ══ -->
+  <section class="section">
+    <div class="container">
+      <div class="productos-grid" id="productos-grid">
+
+        <!-- Producto 1 -->
+        <div class="prod-detail-card reveal" data-cat="blanca">
+          <div class="prod-detail-img" style="background:linear-gradient(135deg,#FFF8EC,#FDE68A);">
+            <img src="assets/images/harina_blanca.png"
+              onerror="this.style.display='none'; this.parentElement.style.fontSize='6rem'"
+              alt="Harina Precocida Blanca" />
+            <span class="prod-badge-corner badge badge-gold">🥇 Más Vendido</span>
+          </div>
+          <div class="prod-detail-body">
+            <h2 class="prod-detail-name">Harina Precocida Blanca</h2>
+            <p class="prod-detail-desc">
+              Elaborada con maíz blanco seleccionado de nuestros cultivos, esta harina precocida ofrece la textura
+              perfecta para arepas, hallacas y tamales. Cocción rápida, sabor auténtico y máxima nutrición.
+            </p>
+            <div class="prod-attrs">
+              <div class="prod-attr">
+                <div class="prod-attr-label">Humedad</div>
+                <div class="prod-attr-val">≤ 13%</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Proteína</div>
+                <div class="prod-attr-val">≥ 7 g/100g</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Presentaciones</div>
+                <div class="prod-attr-val">500g | 1kg | 25kg</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Vida útil</div>
+                <div class="prod-attr-val">12 meses</div>
+              </div>
+            </div>
+            <div class="prod-uses">
+              <h4>Usos Recomendados</h4>
+              <div class="use-tags">
+                <span class="use-tag">Arepas</span>
+                <span class="use-tag">Hallacas</span>
+                <span class="use-tag">Tamales</span>
+                <span class="use-tag">Pandebono</span>
+                <span class="use-tag">Envueltos</span>
+              </div>
+            </div>
+            <a href="contacto.html" class="btn btn-green">Solicitar Cotización</a>
+          </div>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="prod-detail-card reveal" data-cat="amarilla">
+          <div class="prod-detail-img" style="background:linear-gradient(135deg,#FEF3C7,#F59E0B);">
+            <img src="assets/images/harina_amarilla.png"
+              onerror="this.style.display='none'; this.parentElement.style.fontSize='6rem'"
+              alt="Harina Precocida Amarilla" />
+            <span class="prod-badge-corner badge badge-green">Premium</span>
+          </div>
+          <div class="prod-detail-body">
+            <h2 class="prod-detail-name">Harina Precocida Amarilla</h2>
+            <p class="prod-detail-desc">
+              Con maíz amarillo de alta calidad, esta harina aporta color vibrante, mayor contenido de betacarotenos y
+              un sabor más intenso. Ideal para preparaciones tradicionales y gourmet.
+            </p>
+            <div class="prod-attrs">
+              <div class="prod-attr">
+                <div class="prod-attr-label">Betacarotenos</div>
+                <div class="prod-attr-val">Alto contenido</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Proteína</div>
+                <div class="prod-attr-val">≥ 7.5 g/100g</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Presentaciones</div>
+                <div class="prod-attr-val">500g | 1kg | 25kg</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Vida útil</div>
+                <div class="prod-attr-val">12 meses</div>
+              </div>
+            </div>
+            <div class="prod-uses">
+              <h4>Usos Recomendados</h4>
+              <div class="use-tags">
+                <span class="use-tag">Arepas</span>
+                <span class="use-tag">Tortillas</span>
+                <span class="use-tag">Mazamorra</span>
+                <span class="use-tag">Coladas</span>
+                <span class="use-tag">Polenta</span>
+              </div>
+            </div>
+            <a href="contacto.html" class="btn btn-green">Solicitar Cotización</a>
+          </div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="prod-detail-card reveal" data-cat="especial">
+          <div class="prod-detail-img" style="background:linear-gradient(135deg,#D1FAE5,#065F46);">
+            <img src="assets/images/harina_integral.png"
+              onerror="this.style.display='none'; this.parentElement.style.fontSize='6rem'"
+              alt="Harina Integral de Maíz" />
+            <span class="prod-badge-corner badge badge-green">Saludable</span>
+          </div>
+          <div class="prod-detail-body">
+            <h2 class="prod-detail-name">Harina Integral de Maíz</h2>
+            <p class="prod-detail-desc">
+              Molida con todo el salvado del grano, conserva fibra dietaria, vitaminas del complejo B y minerales
+              esenciales. La opción ideal para consumidores conscientes de su salud.
+            </p>
+            <div class="prod-attrs">
+              <div class="prod-attr">
+                <div class="prod-attr-label">Fibra Dietaria</div>
+                <div class="prod-attr-val">≥ 5 g/100g</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Vitamina B3</div>
+                <div class="prod-attr-val">Enriquecida</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Presentaciones</div>
+                <div class="prod-attr-val">500g | 1kg</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Sin gluten</div>
+                <div class="prod-attr-val">✅ Certificado</div>
+              </div>
+            </div>
+            <div class="prod-uses">
+              <h4>Usos Recomendados</h4>
+              <div class="use-tags">
+                <span class="use-tag">Pan Integral</span>
+                <span class="use-tag">Galletas</span>
+                <span class="use-tag">Coladas nutritivas</span>
+                <span class="use-tag">Mezclas horneadas</span>
+              </div>
+            </div>
+            <a href="contacto.html" class="btn btn-green">Solicitar Cotización</a>
+          </div>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="prod-detail-card reveal" data-cat="especial">
+          <div class="prod-detail-img" style="background:linear-gradient(135deg,#FEE2E2,#F59E0B);">
+            <img src="assets/images/masa_niztamizada.png"
+              onerror="this.style.display='none'; this.parentElement.style.fontSize='6rem'" alt="Masa Nixtamalizada" />
+            <span class="prod-badge-corner badge badge-gold">Tradicional</span>
+          </div>
+          <div class="prod-detail-body">
+            <h2 class="prod-detail-name">Masa Nixtamalizada</h2>
+            <p class="prod-detail-desc">
+              Elaborada mediante el ancestral proceso de nixtamalización con cal, que mejora la disponibilidad de
+              niacina, calcio y aminoácidos esenciales. Base perfecta para tortillas y tamales auténticos.
+            </p>
+            <div class="prod-attrs">
+              <div class="prod-attr">
+                <div class="prod-attr-label">Calcio</div>
+                <div class="prod-attr-val">Alto aporte</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Proceso</div>
+                <div class="prod-attr-val">Nixtamalización</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Presentaciones</div>
+                <div class="prod-attr-val">1kg | 5kg | 50kg</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Vida útil</div>
+                <div class="prod-attr-val">8 meses</div>
+              </div>
+            </div>
+            <div class="prod-uses">
+              <h4>Usos Recomendados</h4>
+              <div class="use-tags">
+                <span class="use-tag">Tortillas</span>
+                <span class="use-tag">Tamales mexicanos</span>
+                <span class="use-tag">Pupusas</span>
+                <span class="use-tag">Sopes</span>
+              </div>
+            </div>
+            <a href="contacto.html" class="btn btn-green">Solicitar Cotización</a>
+          </div>
+        </div>
+
+        <!-- Producto 5 -->
+        <div class="prod-detail-card reveal" data-cat="industrial">
+          <div class="prod-detail-img" style="background:linear-gradient(135deg,#E0F2FE,#0369A1);">
+            <img src="assets/images/grits_maiz.png"
+              onerror="this.style.display='none'; this.parentElement.style.fontSize='6rem'"
+              alt="Grits de Maíz Industrial" />
+            <span class="prod-badge-corner badge badge-gold">Industrial</span>
+          </div>
+          <div class="prod-detail-body">
+            <h2 class="prod-detail-name">Grits de Maíz Industrial</h2>
+            <p class="prod-detail-desc">
+              Sémola gruesa de maíz amarillo para la industria cervecera, snacks y cereales. Granulometría controlada
+              para integración perfecta en líneas de producción automatizadas.
+            </p>
+            <div class="prod-attrs">
+              <div class="prod-attr">
+                <div class="prod-attr-label">Granulometría</div>
+                <div class="prod-attr-val">Personalizable</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Almidón</div>
+                <div class="prod-attr-val">≥ 70%</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Presentaciones</div>
+                <div class="prod-attr-val">25kg | 50kg | Granel</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Aplicación</div>
+                <div class="prod-attr-val">Industria B2B</div>
+              </div>
+            </div>
+            <div class="prod-uses">
+              <h4>Sectores de Aplicación</h4>
+              <div class="use-tags">
+                <span class="use-tag">Industria cervecera</span>
+                <span class="use-tag">Snacks</span>
+                <span class="use-tag">Cereales</span>
+                <span class="use-tag">Extruidos</span>
+              </div>
+            </div>
+            <a href="contacto.html" class="btn btn-green">Solicitar Cotización</a>
+          </div>
+        </div>
+
+        <!-- Producto 6 -->
+        <div class="prod-detail-card reveal" data-cat="amarilla">
+          <div class="prod-detail-img" style="background:linear-gradient(135deg,#FFFBEB,#D97706);">
+            <img src="assets/images/harina_pasteleria.png"
+              onerror="this.style.display='none'; this.parentElement.style.fontSize='6rem'"
+              alt="Harina Fina para Pastelería" />
+            <span class="prod-badge-corner badge badge-gold">Nuevo</span>
+          </div>
+          <div class="prod-detail-body">
+            <h2 class="prod-detail-name">Harina Fina para Pastelería</h2>
+            <p class="prod-detail-desc">
+              Granulometría ultra-fina para aplicaciones de repostería y pastelería sin gluten. Proporciona suavidad y
+              ligereza excepcional a tortas, bizcochos y mezclas horneadas premium.
+            </p>
+            <div class="prod-attrs">
+              <div class="prod-attr">
+                <div class="prod-attr-label">Granulometría</div>
+                <div class="prod-attr-val">Ultra-fina ≤100µm</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Sin gluten</div>
+                <div class="prod-attr-val">✅ Certificado</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Presentaciones</div>
+                <div class="prod-attr-val">500g | 1kg | 5kg</div>
+              </div>
+              <div class="prod-attr">
+                <div class="prod-attr-label">Mercado</div>
+                <div class="prod-attr-val">Retail & HoReCa</div>
+              </div>
+            </div>
+            <div class="prod-uses">
+              <h4>Usos Recomendados</h4>
+              <div class="use-tags">
+                <span class="use-tag">Tortas</span>
+                <span class="use-tag">Bizcochos</span>
+                <span class="use-tag">Buñuelos</span>
+                <span class="use-tag">Rebozados</span>
+              </div>
+            </div>
+            <a href="contacto.html" class="btn btn-green">Solicitar Cotización</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CALIDAD ══ -->
+  <section class="calidad-section">
+    <div class="container">
+      <div class="calidad-intro reveal">
+        <span class="section-tag">Estándares</span>
+        <h2>Calidad que se Puede Medir</h2>
+        <p style="color:rgba(255,255,255,.65);margin-top:.5rem;">Cada lote pasa por más de 30 controles de calidad antes
+          de llegar al mercado</p>
+      </div>
+      <div class="calidad-grid">
+        <div class="calidad-item reveal">
+          <div class="calidad-num">30+</div>
+          <div class="calidad-label">Controles por Lote</div>
+        </div>
+        <div class="calidad-item reveal">
+          <div class="calidad-num">INVIMA</div>
+          <div class="calidad-label">Certificación Nacional</div>
+        </div>
+        <div class="calidad-item reveal">
+          <div class="calidad-num">ISO</div>
+          <div class="calidad-label">14001 — Gestión Ambiental</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA ══ -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>¿Necesitas una Propuesta<br>Personalizada?</h2>
+      <p>Trabajamos con distribuidores, cadenas de supermercados e industria alimentaria.<br>Cuéntanos tus necesidades y
+        diseñamos la solución ideal para tu negocio.</p>
+      <div class="cta-btns">
+        <a href="contacto.html" class="btn btn-outline">Solicitar Cotización</a>
+        <a href="proceso.html" class="btn" style="background:var(--color-white);color:var(--color-dark);">Ver
+          Proceso</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo-text">Ze<span style="color:var(--color-primary)">nial</span></div>
+          <p>Empresa agroindustrial colombiana dedicada al cultivo y procesamiento de maíz para la producción de harina
+            de alta calidad.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="proceso.html">Proceso</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <ul>
+            <li><a href="productos.html">Harina Blanca</a></li>
+            <li><a href="productos.html">Harina Amarilla</a></li>
+            <li><a href="productos.html">Harina Integral</a></li>
+            <li><a href="productos.html">Masa Nixtamalizada</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <div class="footer-contact-item"><span class="icon">📍</span><span>Vía Principal Km 12, Villavicencio,
+              Meta</span></div>
+          <div class="footer-contact-item"><span class="icon">📞</span><span>+57 (8) 123 4567</span></div>
+          <div class="footer-contact-item"><span class="icon">✉️</span><span>info@zenial.com.co</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Zenial S.A.S. Todos los derechos reservados.</span>
+        <span>Hecho con 🌽 en Colombia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Filtro de productos
+    const filtros = document.querySelectorAll('.filtro-btn');
+    const cards = document.querySelectorAll('.prod-detail-card');
+    filtros.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filtros.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.cat === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
