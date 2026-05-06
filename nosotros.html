@@ -158,6 +158,21 @@
       color: var(--color-text-light);
       margin-top: .7rem;
     }
+
+    @media (max-width: 768px) {
+      .mv-grid,
+      .historia-layout,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      .historia-img {
+        position: relative;
+        top: 0;
+      }
+      .historia-img img {
+        height: 300px;
+      }
+    }
   </style>
 </head>
 
