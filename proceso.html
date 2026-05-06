@@ -243,6 +243,40 @@
       font-size: .85rem;
       color: var(--color-text-light);
     }
+
+    /* ─── Responsive Móvil ─── */
+    @media (max-width: 768px) {
+      .proceso-etapa {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .proceso-etapa.reverse .etapa-img {
+        order: 1;
+      }
+      .proceso-etapa.reverse .etapa-text {
+        order: 2;
+      }
+      .flujo-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+      }
+      .flujo-steps::before {
+        display: none;
+      }
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+      .sos-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
